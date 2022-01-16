@@ -7,25 +7,27 @@
     <link href="style.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
-    <h1 id="title">Grab Me!</h1>
+    <div>
+      <h1 class="hello">Grab Me!</h1>
+      <h1 class="hello">Grab Me!</h1>
+      <h1 class="hello">Grab Me!</h1>
+    </div>
     
     
     <script>
-      const $title = document.querySelector('#title');
+      const h1 = document.querySelector('div .hello:first-child');
       
       function handleTitleClick() {
-        title.style.color = 'blue';
+        let currentColor = h1.style.color;
+        let newColor;
+        if (currentColor === 'blue') {
+          newColor = 'tomato';
+        } else {
+          newColor = 'blue';
+        }
+        h1.style.color = newColor;
       }
-      function handleMouseEnter() {
-        title.innerText = 'mouse is here';
-      }
-      function handleMouseLesve() {
-        title.innerText = 'mouse is gone';
-      }
-
-      $title.addEventListener('click', handleTitleClick);
-      $title.addEventListener('mouseenter', handleMouseEnter);
-      $title.addEventListener('mouseleave', handleMouseLesve);
+      h1.addEventListener('click', handleTitleClick);
     </script>
 
     <script src="script.js"></script>
