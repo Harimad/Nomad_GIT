@@ -24,7 +24,7 @@
     const loginInput = document.querySelector('#login-form input');
     const logs = document.querySelector('#logs');
 
-    function onLoginBtnClick(e) {
+    function onLoginSubmit(e) {
       e.preventDefault();
       let username = loginInput.value;
 
@@ -34,7 +34,7 @@
       loginInput.focus();
     }
 
-    loginForm.addEventListener('submit', onLoginBtnClick);
+    loginForm.addEventListener('submit', onLoginSubmit);
   </script>
 </body>
 </html>
