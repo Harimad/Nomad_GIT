@@ -1,43 +1,40 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>NomadCode JS Chrome App</title>
-    <link href="style.css" rel="stylesheet" type="text/css" />
-    <style>
-      h1 {
-        color: blue;
-        transition: color 0.5s ease-in-out;
-      }
-      .clicked {
-        color: tomato;
-      }
-    </style>
-  </head>
-  <body>
-    <div>
-      <h1 class="hello">Grab Me!</h1>
-      <h1 class="hello">Grab Me!</h1>
-    </div>
-    
-    <script>
-      const h1 = document.querySelector('div .hello:first-child');
-      
-      //태그.classList.remove || add 대신 toggle
-      function handleTitleClick() {
-        h1.classList.toggle('clicked'); //아래의 코드를 한 줄로 줄임
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Momentum App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <form id="login-form">
+      <input
+        required
+        maxlength="15"
+        type="text"
+        placeholder="What is your name?"
+      />
+      <input class="btn" type="submit" value="Input Log In" />
+      <button >Btn Log In</button>
+    </form>
+    <div id="logs"></div>
 
-        // const clickedClass = 'clicked';
-        // if (h1.classList.contains(clickedClass)) {
-        //   h1.classList.remove(clickedClass);
-        // } else {
-        //   h1.classList.add(clickedClass);
-        // }
-      }
-      h1.addEventListener('click', handleTitleClick);
-    </script>
+  <script>
+    const loginForm = document.querySelector('#login-form');
+    const loginInput = document.querySelector('#login-form input');
+    const logs = document.querySelector('#logs');
 
-    <script src="script.js"></script>
-  </body>
+    function onLoginBtnClick(e) {
+      e.preventDefault();
+      let username = loginInput.value;
+
+      logs.append(username, document.createElement('br'));
+
+      loginInput.value = '';
+      loginInput.focus();
+    }
+
+    loginForm.addEventListener('submit', onLoginBtnClick);
+  </script>
+</body>
 </html>
