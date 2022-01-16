@@ -7,7 +7,27 @@
     <link href="style.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
-    Hello world
+    <h1 id="title">Grab Me!</h1>
+    
+    
+    <script>
+      const $title = document.querySelector('#title');
+      
+      function handleTitleClick() {
+        title.style.color = 'blue';
+      }
+      function handleMouseEnter() {
+        title.innerText = 'mouse is here';
+      }
+      function handleMouseLesve() {
+        title.innerText = 'mouse is gone';
+      }
+
+      $title.addEventListener('click', handleTitleClick);
+      $title.addEventListener('mouseenter', handleMouseEnter);
+      $title.addEventListener('mouseleave', handleMouseLesve);
+    </script>
+
     <script src="script.js"></script>
   </body>
 </html>
