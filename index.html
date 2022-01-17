@@ -12,7 +12,7 @@
   </style>
 </head>
 <body>
-    <form id="login-form">
+    <form class="hidden" id="login-form">
       <input
         required
         maxlength="15"
@@ -29,21 +29,30 @@
     const greeting = document.querySelector('#greeting');
 
     const HIDDEN_CLASSNAME = 'hidden';
-
-    const link = document.querySelector('a');
+    const USERNAME_KEY = 'username';
 
     function onLoginSubmit(e) {
       e.preventDefault();
 
       const username = loginInput.value;
-      localStorage.setItem('username', username);
+      localStorage.setItem(USERNAME_KEY, username);
       loginForm.classList.add(HIDDEN_CLASSNAME);
-
+      paintGeetings(username);
+    }
+    
+    function paintGeetings(username) {
       greeting.classList.remove(HIDDEN_CLASSNAME);
       greeting.innerText = `hello ${username}`;
     }
+    
+    const savedUsername = localStorage.getItem(USERNAME_KEY);
 
-    loginForm.addEventListener('submit', onLoginSubmit);
+    if (savedUsername === null) { // show the form
+      loginForm.classList.remove(HIDDEN_CLASSNAME);
+      loginForm.addEventListener('submit', onLoginSubmit);
+    } else { // show the greetings
+      paintGeetings(savedUsername);
+    }
   </script>
 </body>
 </html>
