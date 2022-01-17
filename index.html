@@ -17,24 +17,28 @@
       <input class="btn" type="submit" value="Input Log In" />
       <button >Btn Log In</button>
     </form>
-    <div id="logs"></div>
-
+    <a href="https://nomadcoders.com">Go to courses</a>
   <script>
     const loginForm = document.querySelector('#login-form');
     const loginInput = document.querySelector('#login-form input');
-    const logs = document.querySelector('#logs');
+
+    const link = document.querySelector('a');
 
     function onLoginSubmit(e) {
       e.preventDefault();
-      let username = loginInput.value;
+      console.log(loginInput.value);
+      
+    }
 
-      logs.append(username, document.createElement('br'));
+    function handleLinkClick(event) {
+      event.preventDefault();
 
-      loginInput.value = '';
-      loginInput.focus();
+      console.log(event);
+      alert('link clicked!');
     }
 
     loginForm.addEventListener('submit', onLoginSubmit);
+    link.addEventListener('click', handleLinkClick);
   </script>
 </body>
 </html>
