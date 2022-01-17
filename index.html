@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Momentum App</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    .hidden {
+      display: none;
+    }
+  </style>
 </head>
 <body>
     <form id="login-form">
@@ -14,31 +19,31 @@
         type="text"
         placeholder="What is your name?"
       />
-      <input class="btn" type="submit" value="Input Log In" />
-      <button >Btn Log In</button>
+      <input class="btn" type="submit" value="Log In" />
     </form>
-    <a href="https://nomadcoders.com">Go to courses</a>
+    <h1 id="greeting" class="hidden"></h1>
+
   <script>
     const loginForm = document.querySelector('#login-form');
     const loginInput = document.querySelector('#login-form input');
+    const greeting = document.querySelector('#greeting');
+
+    const HIDDEN_CLASSNAME = 'hidden';
 
     const link = document.querySelector('a');
 
     function onLoginSubmit(e) {
       e.preventDefault();
-      console.log(loginInput.value);
-      
-    }
 
-    function handleLinkClick(event) {
-      event.preventDefault();
+      const username = loginInput.value;
+      loginForm.classList.add(HIDDEN_CLASSNAME);
+      console.log(username);
 
-      console.log(event);
-      alert('link clicked!');
+      greeting.classList.remove(HIDDEN_CLASSNAME);
+      greeting.innerText = `hello ${username}`;
     }
 
     loginForm.addEventListener('submit', onLoginSubmit);
-    link.addEventListener('click', handleLinkClick);
   </script>
 </body>
 </html>
