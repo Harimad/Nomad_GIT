@@ -16,8 +16,8 @@ function handleTodoForm(event) {
     id: Date.now(),
   };
 
-  toDos.push(newTodoObj);
-  paintToDo(newTodoObj);
+  toDos.push(newTodoObj); //object 형태로 toDos배열에 넣음
+  paintToDo(newTodoObj); //object를 매개변수로 넘김
 
   saveToDos();
 }
@@ -26,7 +26,7 @@ function saveToDos() { //toDos를 localStorage에 넣는 함수
   localStorage.setItem(TODOS_KEY, JSON.stringify(toDos));
 }
 
-function paintToDo(newTodo) { //newTodo 는 Object로 넘어왔음
+function paintToDo(newTodo) { //매개변수 newTodo는 Object로 넘어왔음
   const li = document.createElement('li');
   li.id = newTodo.id; //li에 id값을 넣어서 나중에 Delete 하기 쉽게 만듬
 
