@@ -10,22 +10,30 @@ function handleTodoForm(event) {
   const newTodo = todoInput.value;
   todoInput.value = '';
   todoInput.focus();
-  
-  toDos.push(newTodo);
-  saveToDos();
 
-  paintToDo(newTodo);
+  const newTodoObj = { // 객체 값을 새로 만듬
+    text: newTodo,
+    id: Date.now(),
+  };
+
+  toDos.push(newTodoObj);
+  paintToDo(newTodoObj);
+
+  saveToDos();
 }
 
 function saveToDos() { //toDos를 localStorage에 넣는 함수
   localStorage.setItem(TODOS_KEY, JSON.stringify(toDos));
 }
 
-function paintToDo(newTodo) {
-  const li = document.createElement('li')
+function paintToDo(newTodo) { //newTodo 는 Object로 넘어왔음
+  const li = document.createElement('li');
+  li.id = newTodo.id; //li에 id값을 넣어서 나중에 Delete 하기 쉽게 만듬
+
   const span = document.createElement('span');
   li.style.listStyleType = 'none'; //li 스타일제거
-  span.innerText = newTodo;
+  span.innerText = newTodo.text;
+
   const btn = document.createElement('button');
   btn.innerText = '❌'
   btn.addEventListener('click', deleteTodo);
