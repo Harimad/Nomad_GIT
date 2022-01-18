@@ -7,7 +7,11 @@ function handleTodoForm(event) {
   const newTodo = todoInput.value;
   todoInput.value = '';
   todoInput.focus();
-  todoList.append(newTodo, document.createElement('br'));
+  const newList = document.createElement('li')
+  newList.style.listStyleType = 'none'; //li 스타일제거
+  newList.innerText = newTodo;
+  
+  todoList.append(newList);
 }
 
 todoForm.addEventListener('submit', handleTodoForm);
