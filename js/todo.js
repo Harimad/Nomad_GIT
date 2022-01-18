@@ -44,8 +44,11 @@ function paintToDo(newTodo) { //매개변수 newTodo는 Object로 넘어왔음
 }
 
 function deleteTodo(event) {
-  const element = event.target.parentNode;
-  element.remove();
+  const li = event.target.parentNode;
+  li.remove();
+
+  toDos = toDos.filter((toDo) => toDo.id !== parseInt(li.id));
+  saveToDos();
 }
 
 todoForm.addEventListener('submit', handleTodoForm);
