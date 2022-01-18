@@ -7,11 +7,16 @@ function handleTodoForm(event) {
   const newTodo = todoInput.value;
   todoInput.value = '';
   todoInput.focus();
-  const newList = document.createElement('li')
-  newList.style.listStyleType = 'none'; //li 스타일제거
-  newList.innerText = newTodo;
   
-  todoList.append(newList);
+  paintToDo(newTodo);
 }
 
+function paintToDo(newTodo) {
+  const newList = document.createElement('li')
+  const newSpan = document.createElement('span');
+  newList.appendChild(newSpan);
+  newList.style.listStyleType = 'none'; //li 스타일제거
+  newSpan.innerText = newTodo;
+  todoList.appendChild(newList);
+}
 todoForm.addEventListener('submit', handleTodoForm);
