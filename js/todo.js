@@ -3,7 +3,7 @@ const todoInput = document.querySelector('#todo-form input');
 const todoList = document.querySelector('#todo-list');
 
 const TODOS_KEY = 'todos'; //localStorage key값의 이름
-const toDos = [];
+let toDos = []; //새로고침하면 toDos값이 초기화 됨 -> 아래에 toDos값을 계속 가지도록 toDos = JSON.parse(localStorage.getItem(TODOS_KEY)) 함
 
 function handleTodoForm(event) {
   event.preventDefault();
@@ -46,5 +46,7 @@ const savedToDos = localStorage.getItem(TODOS_KEY); //해당 key값을 담기
 
 if (savedToDos !== null) { //이 값이 있으면
   const parsedToDos = JSON.parse(savedToDos); // 그 값을 배열화 시킴
-  parsedToDos.forEach((item) => console.log(`this is the turn of ${item}`)); // 하나씩 출력 해봄
+  toDos = parsedToDos; // 현재 localStorage 값을 toDos에 값 복원
+
+  parsedToDos.forEach(paintToDo); // 하나씩 출력 해봄
 }
