@@ -47,7 +47,7 @@ function deleteTodo(event) {
   const li = event.target.parentNode;
   li.remove();
 
-  toDos = toDos.filter((toDo) => toDo.id !== parseInt(li.id));
+  toDos = toDos.filter((toDo) => toDo.id !== parseInt(li.id)); //#7.8 강의
   saveToDos();
 }
 
